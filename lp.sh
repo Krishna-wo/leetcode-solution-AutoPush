@@ -277,26 +277,43 @@ PROBLEM_README="${DEST_DIR}/README.md"
 if [ ! -f "$PROBLEM_README" ]; then
   LEETCODE_URL="https://leetcode.com/problems/${PROBLEM_SLUG}/"
   cat > "$PROBLEM_README" << EOF
-# #${PROBLEM_NUM} — ${PROBLEM_NAME}
+# ${PROBLEM_NUM}. ${PROBLEM_NAME}
 
-| Field      | Detail |
-|------------|--------|
-| Difficulty | ${DIFF_DISPLAY} |
-| Topic      | ${TOPIC_DISPLAY} |
-| Language   | ${LANG} |
-| Date       | ${DATE} |
-| Link       | [LeetCode](${LEETCODE_URL}) |
+**Difficulty:** ${DIFF_DISPLAY} &nbsp; | &nbsp; **Topic:** ${TOPIC_DISPLAY} &nbsp; | &nbsp; **Language:** ${LANG} &nbsp; | &nbsp; **Date:** ${DATE}
+
+[View problem on LeetCode](${LEETCODE_URL})
+
+---
+
+## Problem Summary
+
+<!-- Paste a short description of the problem here -->
+
+---
 
 ## Approach
 
-_Describe your approach here._
+<!-- Explain your thinking:
+     - What data structure or algorithm did you use?
+     - Why did you choose this approach?
+     - Any edge cases to watch out for? -->
+
+---
 
 ## Complexity
 
-| | |
-|---|---|
-| Time  | O(?) |
-| Space | O(?) |
+| | Complexity | Notes |
+|---|---|---|
+| Time  | O(?) | |
+| Space | O(?) | |
+
+---
+
+## Code
+
+\`\`\`${EXT}
+$(cat "$FOUND_FILE" 2>/dev/null || cat "${DEST_DIR}/${FOLDER_NAME}.${EXT}")
+\`\`\`
 EOF
   echo -e "  Created -> ${BOLD}${PROBLEM_README}${NC}"
 fi
@@ -307,7 +324,9 @@ if [ ! -f "$ROOT_README" ]; then
   cat > "$ROOT_README" << 'EOF'
 # LeetCode Solutions
 
-Auto-organized using [lp.sh](./lp.sh).
+A personal collection of LeetCode solutions, auto-organized by topic using [lp.sh](./lp.sh).
+
+---
 
 ## Progress
 
